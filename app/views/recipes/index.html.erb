@@ -1,0 +1,36 @@
+<div class= "container">
+<div class="recipe--header">
+<h3>Recipes</h3>
+<%= link_to 'Add new Recipe', new_recipe_path, class: "btn btn-primary" %>
+</div>
+<% if @recipes.any? %>
+    <table class= "table table-striped">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Preparation Time</th>
+            <th>Cooking Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @recipes.each do |recipe| %>
+            <tr>
+                <td>
+                <%= link_to recipe.name, recipe_path(recipe) %> 
+                <% if can? :destroy, recipe %>
+                    <%= button_to "Delete Post", delete_recipe_path(recipe), method: :delete, class: 'btn btn-danger' %>
+                <% end %>
+                </td>
+                <td><%= recipe.description %></td>
+                <td><%= recipe.preparation_time %></td>
+                <td><%= recipe.cooking_time %></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    <% else %>
+        <p>No recipes created</p>
+    <% end %>
+</div>
+
