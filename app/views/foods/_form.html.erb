@@ -1,0 +1,23 @@
+<div>
+  <%= form_with model: @food, url: user_foods_path, method: :post,  local: true, scope: :post  do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field(:name, class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :measurement_unit %><br>
+      <%= form.text_field(:measurement_unit, class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :price %><br>
+      <%= form.number_field(:price, :step => "0.01", class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :quantity %><br>
+      <%= form.number_field(:quantity, :step => "0.01", class: "form-control") %>
+    </p>
+    <p>
+      <%= form.submit 'Add Food' %>
+    </p>
+  <% end %>
+</div>

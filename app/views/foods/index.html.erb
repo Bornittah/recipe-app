@@ -1,0 +1,23 @@
+<div class="food_header">
+  <%= link_to "Add Food", new_user_food_path() %>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_units %></td>
+          <td><%= food.price %></td>
+          <td>Delete</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
