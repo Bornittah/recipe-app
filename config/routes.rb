@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
+  # Defines the root path route ("/")
   root "users#index"
+
+  get 'recipes', to: 'recipes#index', as: 'recipes'
+  get 'recipes/new', to: 'recipes#new', as: 'new_recipe'
+  post 'recipes/create', to: 'recipes#create', as: 'create_recipe'
+  get 'recipes/:recipe_id', to: 'recipes#show', as: 'recipe'
+  delete 'recipe/:recipe_id', to: 'recipes#destroy', as: 'delete_recipe'
+
   resources :users, only: [:index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   # root "articles#index"
 end

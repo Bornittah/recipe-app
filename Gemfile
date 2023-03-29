@@ -18,6 +18,8 @@ gem 'bootstrap', '~> 5.2.2'
 # Bootstrap forms
 gem 'bootstrap_form', '~> 5.1'
 
+gem 'cancancan'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
