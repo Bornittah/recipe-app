@@ -26,3 +26,17 @@ body {
   color: #333;
   background-color: #f5f5f5;
 }
+
+.notice {
+  color: #008000;
+}
+
+.alert {
+  color: #f00;
+}
+
+.recipe--header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
