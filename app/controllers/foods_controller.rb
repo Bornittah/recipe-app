@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
 
   # POST /foods or /foods.json
   def create
-    @food = current_user.foods.build(food_params);
+    @food = current_user.foods.build(food_params)
     respond_to do |format|
       if @food.save
         format.html { redirect_to foods_path(@food), notice: 'Food was successfully created.' }
@@ -45,8 +45,6 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
-    # @food = Food.find(params[:id])
-  
     if @food.destroy
       respond_to do |format|
         format.html { redirect_to foods_url, notice: 'Food was successfully Removed.' }
