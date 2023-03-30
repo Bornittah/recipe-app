@@ -1,3 +1,25 @@
-<%= link_to "Back to Food List", user_foods_path() %>
+<%= link_to "Back to Food List", foods_path(), :class=> "btn btn-primary" %>
 <h1>Create New Food</h1>
-<%= render "form" %>
+<div>
+  <%= form_with(model: @food) do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field(:name, class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :measurement_unit %><br>
+      <%= form.text_field(:measurement_unit, class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :price %><br>
+      <%= form.number_field(:price, :step => "0.01", class: "form-control") %>
+    </p>
+    <p>
+      <%= form.label :quantity %><br>
+      <%= form.number_field(:quantity, :step => "0.01", class: "form-control") %>
+    </p>
+    <p>
+      <%= form.submit 'Add Food', :class=> "btn btn-primary" %>
+    </p>
+  <% end %>
+</div>

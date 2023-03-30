@@ -1,9 +1,8 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit update destroy]
-
   # GET /foods or /foods.json
   def index
-    @foods = Food.all
+    @foods = current_user.foods
   end
 
   # GET /foods/1 or /foods/1.json
@@ -17,17 +16,12 @@ class FoodsController < ApplicationController
     end
   end
 
-  # GET /foods/1/edit
-  def edit; end
-
   # POST /foods or /foods.json
   def create
-    # @food = Food.new(food_params)
-    @food = current_user.foods.build(food_params)
-
+    @food = current_user.foods.build(food_params);
     respond_to do |format|
       if @food.save
-        format.html { redirect_to user_foods_path(@food), notice: 'Food was successfully created.' }
+        format.html { redirect_to foods_path(@food), notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,11 +45,13 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
-    @food.destroy
-
-    respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
-      format.json { head :no_content }
+    # @food = Food.find(params[:id])
+  
+    if @food.destroy
+      respond_to do |format|
+        format.html { redirect_to foods_url, notice: 'Food was successfully Removed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
