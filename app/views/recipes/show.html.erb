@@ -1,5 +1,9 @@
 
 <h1><%= @recipe.name %></h1>
-<h3>Preparation time: <%= @recipe.preparation_time %></h3>
-<h3>Cooking time: <%= @recipe.cooking_time %></h3>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<label class="switch" id="public-toggle" onclick="slider()">
+  <input <% if @recipe.public %> <%= :checked %> <% end %> type="checkbox" />
+  <span class="slider round"></span>
+</label>
+<h4>Preparation time: <%= @recipe.preparation_time %></h4>
+<h4>Cooking time: <%= @recipe.cooking_time %></h4>
+<h4>Description</h4> <p><%= @recipe.description %></p>

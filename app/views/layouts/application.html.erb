@@ -7,15 +7,20 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css' %>
+    <%= javascript_include_tag 'https://code.jquery.com/ui/1.13.0/jquery-ui.js' %>
   </head>
   <body>
   <div class= 'container'>
   <p class= 'notice'><%= notice %></p>
   <p class= 'alert'><%= alert %></p>
   <%= yield %>
+  <div class="d-flex m-3">
   <% if(user_signed_in?) %>
   <%= button_to "Sign out", destroy_user_session_path, :class => 'btn btn-secondary', :method => :delete, data: {turbo: false}%>
   <% end %>
+  <%= button_to "Home", root_path, :class => 'btn btn-success', :method => :get %>
+  </div>
   </div>
   </body>
 </html>

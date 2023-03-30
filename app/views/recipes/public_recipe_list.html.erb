@@ -1,0 +1,24 @@
+<div class="container">
+<h3 class="public--header">Public Recipes</h3>
+<div class="public--recipes">
+    <% if @recipes.any? %>
+        <div class="public-recipe">
+            <% @recipes.each do |recipe| %>
+                <div class="recipe--name">
+                    <h3><%= link_to recipe.name, recipe_path(recipe), class: "recipe" %></h3>
+                    By: <%= recipe.user.name %>
+                    </div>
+                <div class="recipe--description">
+                    <p>Total Food:<%= recipe.preparation_time %></p>
+                    <p>Total price<%= recipe.cooking_time %></p>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="no--recipes">
+            <p>No Public recipes created</p>
+        </div>
+    <% end %>
+</div>
+
+</div>
