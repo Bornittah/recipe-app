@@ -1,5 +1,5 @@
 <div>
-  <%= form_with model: @food, url: user_foods_path, method: :post,  local: true, scope: :post  do |form| %>
+  <%= form_with(model: @food) do |form| %>
     <p>
       <%= form.label :name %><br>
       <%= form.text_field(:name, class: "form-control") %>
