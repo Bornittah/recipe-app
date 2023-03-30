@@ -12,10 +12,8 @@
   <div class= 'container'>
   <p class= 'notice'><%= notice %></p>
   <p class= 'alert'><%= alert %></p>
+  <%= render "menu/navbar" %>
   <%= yield %>
-  <% if(user_signed_in?) %>
-  <%= button_to "Sign out", destroy_user_session_path, :class => 'btn btn-secondary', :method => :delete, data: {turbo: false}%>
-  <% end %>
   </div>
   </body>
 </html>
