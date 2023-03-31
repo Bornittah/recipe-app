@@ -1,5 +1,14 @@
-
+<div>
 <h1><%= @recipe.name %></h1>
-<h3>Preparation time: <%= @recipe.preparation_time %></h3>
-<h3>Cooking time: <%= @recipe.cooking_time %></h3>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<% if can? :create, @recipe %>
+<label class="switch">
+  <input <% if @recipe.public %> <%= :checked %> <% end %> class="slider round" type="checkbox" id="public_toggle" />
+  <span class="slider round" onclick="slider()"></span>
+</label>
+<% end %>
+<h4>Preparation time: <%= @recipe.preparation_time %></h4>
+<h4>Cooking time: <%= @recipe.cooking_time %></h4>
+<h4>Description</h4> <p><%= @recipe.description %></p>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token, id: 'csrf-token' %>
+</div>
+<%= javascript_include_tag 'slider' %>

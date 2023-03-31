@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.order(created_at: :desc)
   end
 
   def new
@@ -32,9 +32,26 @@ class RecipesController < ApplicationController
     end
   end
 
+  def public_recipe_list
+    @recipes = Recipe.where(public: true).order(created_at: :desc)
+  end
+
+  def public_toggle_update
+    @recipe = Recipe.find(params[:recipe_id])
+    if @recipe.update_column(:public, public_toggle_params[:public_toggle] == 'true')
+      render json: { status: 'successful' }
+    else
+      render json: { status: 'not successful' }
+    end
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time)
+    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+  end
+
+  def public_toggle_params
+    params.permit(:recipe_id, :public_toggle, :authenticity_token)
   end
 end
