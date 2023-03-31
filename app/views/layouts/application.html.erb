@@ -12,6 +12,7 @@
   <div class= 'container'>
   <p class= 'notice'><%= notice %></p>
   <p class= 'alert'><%= alert %></p>
+  <%= render "menu/navbar" %>
   <%= yield %>
   <div class="d-flex m-3">
   <% if(user_signed_in?) %>
