@@ -1,4 +1,4 @@
-<div class="food_header">
+<div class="d-flex justify-content-end">
   <%= link_to "Add Food", new_food_path(), :class=> "btn btn-primary" %>
 </div>
 <div class="table-responsive">
@@ -6,7 +6,7 @@
     <thead>
       <th>Food</th>
       <th>Measurement Unit</th>
-      <th>Unit Price($)</th>
+      <th>Unit Price</th>
       <th>Quantity</th>
       <th>Action</th>
     </thead>
@@ -15,7 +15,7 @@
         <tr>
           <td><%= link_to food.name, food_path(food) %></td>
           <td><%= food.measurement_unit %></td>
-          <td><%= food.price %></td>
+          <td><%= number_to_currency(food.price) %></td>
           <td><%= food.quantity %></td>
           <td>
             <%= button_to "Delete", delete_food_path(food), method: :delete, class: 'btn btn-danger' %>

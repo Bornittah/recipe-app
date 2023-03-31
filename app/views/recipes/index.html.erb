@@ -18,8 +18,10 @@
             <tr>
                 <td>
                 <%= link_to recipe.name, recipe_path(recipe) %> 
-                <% if can? :destroy, recipe %>
-                    <%= button_to "Delete", delete_recipe_path(recipe), method: :delete, class: 'btn btn-danger' %>
+                <% if can? :delete, recipe %>
+                    <%= button_to "Delete", recipe_path(recipe), method: :delete, class: "btn btn-danger" %>
+                <% else %>
+                    <%= button_to "Delete", recipe_path(recipe), method: :delete, disabled: true, class: "btn btn-danger" %>
                 <% end %>
                 </td>
                 <td><%= recipe.description %></td>
