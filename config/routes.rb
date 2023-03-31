@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get 'recipes/:recipe_id', to: 'recipes#show', as: 'recipe'
   delete 'recipe/:recipe_id', to: 'recipes#destroy', as: 'delete_recipe'
 
-  get 'recipes/:recipe_id/update', to: 'recipes#public_toggle', as: 'public_toggle'
-
+  post 'recipes/:recipe_id/toggle_public', to: 'recipes#public_toggle_update', as: 'public_toggle'
   resources :users, only: [:index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # root "articles#index"

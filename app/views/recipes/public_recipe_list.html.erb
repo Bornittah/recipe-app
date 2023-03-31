@@ -9,16 +9,15 @@
                     By: <%= recipe.user.name %>
                     </div>
                 <div class="recipe--description">
-                    <p>Total Food:<%= recipe.preparation_time %></p>
-                    <p>Total price<%= recipe.cooking_time %></p>
+                    <p>Preparation time:<%= recipe.preparation_time %></p>
+                    <p>Cooking time: <%= recipe.cooking_time %></p>
                 </div>
             <% end %>
         </div>
     <% else %>
         <div class="no--recipes">
-            <p>No Public recipes created</p>
+            <p>No Public recipes added</p>
         </div>
     <% end %>
 </div>
-
 </div>
