@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!, except: %i[public show]
 
-
   def index
     # @recipes = current_user.recipes.order(created_at: :desc)
     @recipes = Recipe.all.where(user_id: current_user.id).includes(:recipe_foods)
@@ -24,7 +23,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_foods = RecipeFood.all.where(recipe_id: params[:id]).includes(:food)
-    # @recipe = Recipe.find(params[:recipe_id])
     @shopping_list =
       @recipe = Recipe.find(params[:id])
   end

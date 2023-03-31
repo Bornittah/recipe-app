@@ -5,17 +5,14 @@ class RecipeFoodsController < ApplicationController
     @recipe_foods = RecipeFood.all
   end
 
-
   def new
     @all_foods = Food.all
     @recipe_food = RecipeFood.new
   end
 
-
   def edit
     @all_foods = Food.all
   end
-
 
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
