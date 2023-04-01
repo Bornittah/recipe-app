@@ -1,0 +1,24 @@
+<h1><span class="text-primary"><%= @food.name %></span> details</h1>
+<table class="table table-striped table-hover">
+    <thead>
+      <th>Field</th>
+      <th>Details</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name: </td>
+        <td><%= @food.name %></td>
+      </tr><tr>
+        <td>Measurement Unit: </td>
+        <td><%= @food.measurement_unit %></td>
+      </tr>
+      <tr>
+        <td>Price($)</td>
+        <td><%= @food.price %></td>
+      </tr>
+      <tr>
+        <td>Quantity</td>
+        <td><%= @food.quantity %></td>
+      </tr>
+    </tbody>
+  </table>

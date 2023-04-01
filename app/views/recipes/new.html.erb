@@ -1,0 +1,11 @@
+<div class= "container mb-3">
+<h3>New Recipe</h3>
+<%= bootstrap_form_with model: @recipe do |f| %>
+    <h6><%= f.text_field :name %></h6>
+    <h6><%= f.text_area :description %></h6>
+    <h6><%= f.number_field :preparation_time %></h6>
+    <h6><%= f.number_field :cooking_time %></h6>
+    <h6><%= f.check_box :public %></h6>
+    <%= f.submit 'Create Recipe' %>
+<% end %>
+</div>

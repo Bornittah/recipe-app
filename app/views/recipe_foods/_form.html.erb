@@ -1,0 +1,26 @@
+<%= bootstrap_form_with model: recipe_food, url: recipe_recipe_foods_path do |form| %>
+  <% if recipe_food.errors.any? %>
+    <div class="alert">
+      <h2><%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:</h2>
+
+      <ul>
+        <% recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :Please_select_a_food_item_to_add, class: "d-block"%>
+    <%= form.collection_select :food_id, all_foods, :id, :name, :prompt => true, class: "select-inventory-food" %>
+  </div>
+
+  <div>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
