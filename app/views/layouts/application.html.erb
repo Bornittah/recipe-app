@@ -9,16 +9,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-  <div class= 'container'>
-  <p class= 'notice'><%= notice %></p>
-  <p class= 'alert'><%= alert %></p>
   <%= render "menu/navbar" %>
-  <%= yield %>
-  <div class="d-flex m-3">
-  <% if(user_signed_in?) %>
-  <%= button_to "Sign out", destroy_user_session_path, :class => 'btn btn-secondary', :method => :delete, data: {turbo: false}%>
-  <% end %>
-  </div>
+  <p class='notice'><%= notice %></p>
+  <p class='alert'><%= alert %></p>
+  <div class= "container">
+    <%= yield %>
   </div>
   </body>
 </html>

@@ -1,8 +1,10 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!, except: %i[public show]
 
   def index
-    @recipes = current_user.recipes.order(created_at: :desc)
+    # @recipes = current_user.recipes.order(created_at: :desc)
+    @recipes = Recipe.all.where(user_id: current_user.id).includes(:recipe_foods)
   end
 
   def new
@@ -20,16 +22,16 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_foods = RecipeFood.all.where(recipe_id: params[:id]).includes(:food)
+    @shopping_list =
+      @recipe = Recipe.find(params[:id])
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
-    if @recipe.destroy
-      redirect_to recipes_path, notice: 'Recipe deleted successfully'
-    else
-      render :index
-    end
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    flash[:notice] = 'Recipe successfully deleted'
+    redirect_to recipes_path
   end
 
   def public_recipe_list
