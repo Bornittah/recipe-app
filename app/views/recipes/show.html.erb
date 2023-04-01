@@ -28,7 +28,7 @@
     <tbody>
       <% @recipe_foods.each do |recipe_food| %>
         <tr>
-          <td><%= link_to recipe_food.food.name, food_path(recipe_food)%></td> 
+          <td><%= link_to recipe_food.food.name, food_path(recipe_food.food)%></td> 
           <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
           <td><%= recipe_food.food.price*recipe_food.quantity %></td>
           <td></td>
