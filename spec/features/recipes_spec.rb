@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Recipe page', type: :system do
+RSpec.describe 'Recipe page', type: :system do
   before do
     @user = create :user
     visit new_user_session_path
